@@ -124,6 +124,13 @@ brew install tmate
 brew install tmux
 brew install reattach-to-user-namespace
 brew install pipx
+brew install gawk
+brew install mitmproxy
+brew install ctop
+
+# TIling window manager
+brew install amethyst
+
 
 # BREW CASK
 brew tap homebrew/cask
