@@ -32,8 +32,17 @@ if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
   chsh -s "${BREW_PREFIX}/bin/bash";
 fi;
 
+
 # Install `wget` with IRI support.
 brew install wget --with-iri
+
+# TAPS
+brew tap homebrew/cask
+brew tap homebrew/cask-eid
+brew tap homebrew/cask-drivers
+brew tap caskroom/versions
+
+
 
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
@@ -127,14 +136,16 @@ brew install pipx
 brew install gawk
 brew install mitmproxy
 brew install ctop
+brew install speedtest_cli
+brew install calc
+brew install unar
+brew
 
 # TIling window manager
 brew install amethyst
 
 
 # BREW CASK
-brew tap homebrew/cask
-brew tap homebrew/cask-eid
 brew cask install 1password
 brew cask install 1password-cli
 brew cask install slack

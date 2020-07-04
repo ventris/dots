@@ -11,6 +11,7 @@ all: \
 	python3 \
 	ssh \
 	tmux \
+	keyboard-layout
 
 
 vim: \
@@ -114,3 +115,7 @@ tmux: \
 	# Install tpm
 	mkdir -p ~/.tmux/plugins
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+keyboard-layout: \
+	# Add keyboard layout to system
+	cp ${DOTFILES}/wonderful.keylayout /Library/Keyboard Layouts/wonderful.keylayout
