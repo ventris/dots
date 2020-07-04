@@ -9,7 +9,8 @@ all: \
 	zsh \
 	kubectl \
 	python3 \
-	ssh
+	ssh \
+	tmux \
 
 
 vim: \
@@ -20,6 +21,7 @@ vim: \
 vim-dirs:
 	# create vim directories
 	mkdir -p ~/.vim/tmp/{backup,swap,undo}
+
 
 vim-plugins: \
 	# Install Vim plugins
@@ -32,11 +34,13 @@ vim-plugins: \
 	# post installation steps of command-t (use the ruby that ships with vim)
 	cd ~/.vim/bundle/command-t/ruby/command-t/ext/command-t && /usr/local/opt/ruby/bin/ruby extconf.rb && make
 
+
 vim-color: \
 	# Install Vim colors
 	mkdir -p ~/.vim/colors
 	git clone https://github.com/chriskempson/tomorrow-theme.git ~/.vim/colors/tomorrow-theme
 	cp ~/.vim/colors/tomorrow-theme/vim/colors/*.vim ~/.vim/colors/
+
 
 zsh: \
 	# Upgrade oh-my-zsh if possible
@@ -48,18 +52,20 @@ zsh: \
 	ln -s ~/.oh-my-zsh/custom/themes/typo/typo.zsh-theme ~/.oh-my-zsh/custom/themes/typo.zsh-theme
 
 
-
 brew: \
 	brew-install
 	bash ./brew.sh
+
 
 brew-install:
 	xcode-select --install
 	ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	brew analytics off
 
+
 defaults: \
 		bash ./defaults.sh
+
 
 dotfiles: \
 	# Rsync out the dotfiles
@@ -74,8 +80,10 @@ dotfiles: \
 		--exclude "LICENSE" \
 		-avh --no-perms . ~;
 
+
 kubectl:
 	kubectl completion bash > ~/.kube/bash_completion
+
 
 python3: \
 	# Install python packages
@@ -84,6 +92,7 @@ python3: \
 	pip3 install pylint
 	pip3 install hvac
 	pip3 install ansible
+	pipx ensurepath
 
 
 ssh: \
@@ -91,8 +100,17 @@ ssh: \
 	mkdir -p ~/.ssh/control
 	mkdir -p ~/.ssh/config.d
 
+
 git: \
 	#Create git directories
 	mkdir -p ~/wcode
 	mkdir -p ~/code
 	cp ${DOTFILES}/.gitconfig-work ~/wcode/.gitconfig
+
+
+tmux: \
+	# Install tmuxp
+	pipx install --force tmuxp
+	# Install tpm
+	mkdir -p ~/.tmux/plugins
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

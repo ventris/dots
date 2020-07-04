@@ -121,7 +121,9 @@ brew install vault
 brew install gnu-tar
 brew install geoip
 brew install tmate
-
+brew install tmux
+brew install reattach-to-user-namespace
+brew install pipx
 
 # BREW CASK
 brew tap homebrew/cask
