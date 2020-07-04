@@ -118,4 +118,4 @@ tmux: \
 
 keyboard-layout: \
 	# Add keyboard layout to system
-	cp ${DOTFILES}/wonderful.keylayout /Library/Keyboard Layouts/wonderful.keylayout
+	cp ${DOTFILES}/wonderful.keylayout /Library/Keyboard\ Layouts/wonderful.keylayout
